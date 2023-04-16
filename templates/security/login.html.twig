@@ -1,17 +1,30 @@
 {% extends 'base.html.twig' %}
 
+{% block title %}Se connecter{% endblock %}
+
 {% block body %}
-    {% if error %}
-        <div class="alert alert-danger" role="alert">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
-    {% endif %}
+    <section class="login-section margin-top-50">
+        <div class="wrapper wrapper-small">
+            <form method="post">
 
-    <form action="{{ path('security_login') }}" method="post">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" id="username" name="_username" value="{{ last_username }}" />
+                {% if error %}
+                    <div class="alert error center-text margin-bottom-50">{{ error.messageKey|trans(error.messageData, 'security') }}</div>
+                {% endif %}
 
-        <label for="password">Mot de passe :</label>
-        <input type="password" id="password" name="_password" />
+                {% if app.user %}
+                    <div class="alert info inline center-text margin-bottom-50">
+                        Vous êtes connecté en tant que <span style="font-weight: 500;">{{ app.user.userIdentifier }}</span>, <a href="{{ path('logout') }}">se déconnecter</a>.
+                    </div>
+                {% else %}
+                    <label for="inputEmail">Email</label>
+                    <input type="email" value="{{ last_username }}" name="email" id="inputEmail" class="form-control" autocomplete="email" required autofocus>
+                    <label for="inputPassword">Mot de passe</label>
+                    <input type="password" name="password" id="inputPassword" class="form-control" autocomplete="current-password" required>
+                    <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                    <button class="button-primary button-blue button-big" type="submit">Se connecter</button>
+                {% endif %}
 
-        <button class="btn btn-success" type="submit">Se connecter</button>
-    </form>
+            </form>
+        </div>
+    </section>
 {% endblock %}
