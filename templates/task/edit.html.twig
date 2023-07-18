@@ -7,7 +7,7 @@
     <div class="create-task-section margin-top-50">
         <div class="wrapper wrapper-small">
 
-            {{ form_start(form, {'action' : path('task_edit', { 'id' : task.id })}) }}
+            {{ form_start(form, {'action' : path('app_task_edit', { 'id' : task.id })}) }}
                 {{ form_row(form.title) }}
                 {{ form_row(form.content) }}
                 <button type="submit" class="button-primary button-blue button-big btn btn-success">Modifier</button>

@@ -7,13 +7,13 @@
     <div class="create-task-section margin-top-50">
         <div class="wrapper wrapper-small">
 
-            {{ form_start(form, {'action' : path('task_create')}) }}
+            {{ form_start(form, {'action' : path('app_task_create')}) }}
                 {{ form_row(form.title) }}
                 {{ form_row(form.content) }}
                 <button type="submit" class="button-primary button-blue button-big">Ajouter</button>
             {{ form_end(form) }}
 
-            <a href="{{ path('task_list') }}" class="button-secondary button-dark-blue margin-top-20">Retour à la liste des tâches</a>
+            <a href="{{ path('app_task_list') }}" class="button-secondary button-dark-blue margin-top-20">Retour à la liste des tâches</a>
         </div>
     </div>
 

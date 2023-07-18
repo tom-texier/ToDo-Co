@@ -13,7 +13,7 @@
 
                 {% if app.user %}
                     <div class="alert info inline center-text margin-bottom-50">
-                        Vous êtes connecté en tant que <span style="font-weight: 500;">{{ app.user.userIdentifier }}</span>, <a href="{{ path('logout') }}">se déconnecter</a>.
+                        Vous êtes connecté en tant que <span style="font-weight: 500;">{{ app.user.userIdentifier }}</span>, <a href="{{ path('app_logout') }}">se déconnecter</a>.
                     </div>
                 {% else %}
                     <label for="inputEmail">Email</label>

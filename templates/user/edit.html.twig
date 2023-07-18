@@ -7,12 +7,12 @@
     <section class="users-edit-sections margin-top-50">
         <div class="wrapper wrapper-small">
 
-            {{ form_start(form, {'action' : path('user_edit', {'id' : user.id} )}) }}
-            {{ form_row(form.username) }}
-            {{ form_row(form.email) }}
-            {{ form_row(form.password) }}
-            {{ form_row(form.roles) }}
-            <button type="submit" class="button-primary button-blue button-big btn btn-success">Modifier</button>
+            {{ form_start(form, {'action' : path('app_user_edit', {'id' : user.id} )}) }}
+                {{ form_row(form.username) }}
+                {{ form_row(form.email) }}
+                {{ form_row(form.password) }}
+                {{ form_row(form.roles) }}
+                <button type="submit" class="button-primary button-blue button-big btn btn-success">Modifier</button>
             {{ form_end(form) }}
 
         </div>

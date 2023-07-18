@@ -8,14 +8,11 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class DefaultController extends AbstractController
 {
-    #[Route("/", name:"home")]
+    #[Route("/", name:"app_homepage")]
     public function indexAction(TaskRepository $taskRepository)
     {
         $tasks = $taskRepository->findSome(6);
 
-        return $this->render('default/index.html.twig', [
-            'user' => $this->getUser(),
-            'tasks' => $tasks
-        ]);
+        return $this->render('default/index.html.twig', ['user' => $this->getUser(), 'tasks' => $tasks]);
     }
 }

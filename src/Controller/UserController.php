@@ -15,15 +15,13 @@ use Symfony\Component\Routing\Annotation\Route;
 #[IsGranted("ROLE_ADMIN")]
 class UserController extends AbstractController
 {
-    #[Route("/admin/users", name:"user_list")]
+    #[Route("/admin/users", name:"app_user_list")]
     public function listAction(UserRepository $userRepository)
     {
-        return $this->render('user/list.html.twig', [
-            'users' => $userRepository->findAll()
-        ]);
+        return $this->render('user/list.html.twig', ['users' => $userRepository->findAll()]);
     }
 
-    #[Route("/admin/users/create", name:"user_create")]
+    #[Route("/admin/users/create", name:"app_user_create")]
     public function createAction(Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $em)
     {
         $user = new User();
@@ -38,15 +36,13 @@ class UserController extends AbstractController
 
             $this->addFlash('success', sprintf('L\'utilisateur <strong>%s</strong> a bien été ajouté.', $user->getUserIdentifier()));
 
-            return $this->redirectToRoute('user_list');
+            return $this->redirectToRoute('app_user_list');
         }
 
-        return $this->render('user/create.html.twig', [
-            'form' => $form->createView()
-        ]);
+        return $this->render('user/create.html.twig', ['form' => $form->createView()]);
     }
 
-    #[Route("/admin/users/{id}/edit", name:"user_edit")]
+    #[Route("/admin/users/{id}/edit", name:"app_user_edit")]
     public function editAction(User $user, Request $request, UserPasswordHasherInterface $userPasswordHasher, EntityManagerInterface $em)
     {
         $form = $this->createForm(UserType::class, $user);
@@ -60,16 +56,13 @@ class UserController extends AbstractController
 
             $this->addFlash('success', sprintf('L\'utilisateur <strong>%s</strong> a bien été modifié.', $user->getUserIdentifier()));
 
-            return $this->redirectToRoute('user_list');
+            return $this->redirectToRoute('app_user_list');
         }
 
-        return $this->render('user/edit.html.twig', [
-            'form' => $form->createView(),
-            'user' => $user
-        ]);
+        return $this->render('user/edit.html.twig', ['form' => $form->createView(), 'user' => $user]);
     }
 
-    #[Route("/admin/users/{id}/delete", name:"user_delete")]
+    #[Route("/admin/users/{id}/delete", name:"app_user_delete")]
     public function deleteAction(User $user, EntityManagerInterface $em)
     {
         $em->remove($user);
@@ -77,6 +70,6 @@ class UserController extends AbstractController
 
         $this->addFlash('success', sprintf('L\'utilisateur <strong>%s</strong> a bien été supprimé.', $user->getUserIdentifier()));
 
-        return $this->redirectToRoute('user_list');
+        return $this->redirectToRoute('app_user_list');
     }
 }

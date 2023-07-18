@@ -62,12 +62,12 @@
                                 </div>
 
                                 {% if is_granted('ROLE_USER') %}
-                                    <a class="edit-picto" href="{{ path('task_edit', {'id' : task.id }) }}">
+                                    <a class="edit-picto" href="{{ path('app_task_edit', {'id' : task.id }) }}">
                                         <img src="{{ asset('img/pen.svg') }}" alt="">
                                     </a>
                                 {% endif %}
 
-                            <h4><a href="{{ path('task_edit', {'id' : task.id }) }}">{{ task.title }}</a></h4>
+                            <h4><a href="{{ path('app_task_edit', {'id' : task.id }) }}">{{ task.title }}</a></h4>
                             <p>{{ task.content | raw }}</p>
 
                             {%  if task.author is null %}
@@ -80,14 +80,14 @@
 
                         {% if is_granted('ROLE_USER') %}
                             <div class="actions">
-                                <form action="{{ path('task_toggle', {'id' : task.id }) }}">
+                                <form action="{{ path('app_task_toggle', {'id' : task.id }) }}">
                                     <button class="button-secondary button-dark-blue">
                                         {% if not task.isDone %}Marquer comme faite{% else %}Marquer non terminée{% endif %}
                                     </button>
                                 </form>
 
                                 {% if is_granted('task_delete', task) %}
-                                    <form action="{{ path('task_delete', {'id' : task.id }) }}">
+                                    <form action="{{ path('app_task_delete', {'id' : task.id }) }}">
                                         <button class="button-primary button-dark-grey">Supprimer</button>
                                     </form>
                                 {% endif %}
