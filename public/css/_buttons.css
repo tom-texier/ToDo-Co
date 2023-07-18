@@ -1,0 +1,100 @@
+.button-primary, .button-secondary {
+  padding: 8px 16px;
+  border: unset;
+  color: var(--clr-white);
+  gap: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: var(--br-primary);
+  transition: background-color .4s, color .4s, opacity .4s;
+  width: 100%;
+}
+
+a.button-primary:hover, button.button-primary:hover {
+  background-color: var(--clr-very-dark-grey);
+}
+
+.button-primary.button-big, .button-secondary.button-big, form button[type=submit].button-big {
+  padding: 15px 25px;
+}
+
+.button-secondary.button-white:hover {
+  background-color: var(--clr-white);
+}
+
+.button-primary.button-blue {
+  background-color: var(--clr-blue);
+}
+
+.button-primary.button-pink {
+  background-color: var(--clr-pink);
+}
+
+.button-primary.button-yellow {
+  background-color: var(--clr-yellow);
+}
+
+.button-primary.button-dark-blue {
+  background-color: var(--clr-blue);
+}
+
+.button-primary.button-dark-pink {
+  background-color: var(--clr-dark-pink);
+}
+
+.button-primary.button-dark-yellow {
+  background-color: var(--clr-dark-yellow);
+}
+
+.button-primary.button-dark-grey {
+  background-color: var(--clr-dark-grey);
+}
+
+.button-primary.button-transparent-grey {
+  background-color: var(--clr-transparent-grey);
+}
+
+.button-primary.button-transparent-grey:hover {
+  background-color: var(--clr-transparent-black);
+}
+
+.button-secondary {
+  background-color: unset;
+}
+
+.button-secondary:hover {
+  background-color: var(--clr-transparent-grey);
+}
+
+.button-secondary.button-dark-grey {
+  color: var(--clr-dark-grey);
+}
+
+.button-secondary.button-dark-blue {
+  color: var(--clr-dark-blue);
+}
+
+.button-secondary.button-dark-blue:hover {
+  background-color: var(--clr-very-light-blue);
+}
+
+.button-secondary.button-dark-pink {
+    color: var(--clr-dark-pink);
+}
+
+.button-secondary.button-dark-yellow {
+  color: var(--clr-dark-yellow);
+}
+
+.button-secondary.button-dark-yellow:hover, .button-secondary.button-dark-yellow.active {
+  background-color: var(--clr-white);
+}
+
+.button-secondary.button-dark-green {
+  color: var(--clr-dark-green);
+}
+
+.button-secondary.button-dark-green:hover {
+  background-color: var(--clr-white);
+}

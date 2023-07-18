@@ -1,0 +1,98 @@
+@media (max-width: 1280px) {
+  .banner.wide {
+    background-size: 500px;
+    background-position: left -100px top 50%;
+  }
+
+  .tasks-grid {
+    grid-gap: 40px;
+  }
+}
+
+@media (max-width: 1024px) {
+  .banner:not(.wide) h1 {
+    background-color: unset;
+    text-align: center;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .banner, .banner.wide {
+    align-items: center;
+    min-height: unset;
+  }
+
+  .banner::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--clr-very-light-blue);
+    opacity: .8;
+  }
+}
+
+@media (max-width: 768px) {
+  :root {
+    --fs-very-big-title: 40px;
+    --fs-big-title: 30px;
+    --fs-title: 24px;
+    --fs-small-title: 20px;
+    --fs-big-text: 16px;
+    --fs-regular-text: 14px;
+  }
+
+  .margin-top-50 {
+    margin-top: 40px;
+  }
+
+  .margin-bottom-50 {
+    margin-bottom: 40px;
+  }
+
+  .hide-on-mobile {
+    display: none;
+  }
+
+  .navbar .logo img {
+    height: 25px;
+  }
+
+  .table th, .table td {
+    padding: 15px;
+  }
+
+  .banner {
+    background-size: 500px;
+  }
+
+  .banner:not(.wide) h1, .banner h1 {
+    padding: unset;
+    margin: 50px;
+  }
+
+  .tasks-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tasks-grid .wide {
+    grid-column: unset;
+  }
+
+  .tasks-grid .tall {
+    grid-row: unset;
+  }
+
+  .actions ul, .alert {
+    flex-direction: column;
+  }
+
+  form input, form textarea {
+    margin-top: 10px;
+    margin-bottom: 30px;
+  }
+}

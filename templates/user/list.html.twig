@@ -2,37 +2,67 @@
 
 {% block header_img %}{% endblock %}
 
-{% block header_title %}<h1>Liste des utilisateurs</h1>{% endblock %}
+{% block title %}Liste des utilisateurs{% endblock %}
 
 {% block body %}
-    {% if users|length == 0 %}
-        <div class="alert alert-warning" role="alert">
-            Il n'y a pas encore d'utilisateur enregistré. <a href="{{ path('user_create') }}" class="btn btn-warning pull-right">Créer un utilisateur</a>
+    <section class="users-list-section margin-top-50">
+        <div class="wrapper">
+
+            {% if users|length == 0 %}
+                <div class="alert alert-warning" role="alert">
+                    Il n'y a pas encore d'utilisateur enregistré. <a href="{{ path('app_user_create') }}" class="btn btn-warning pull-right">Créer un utilisateur</a>
+                </div>
+            {% else %}
+                <div class="table-scroll">
+                    <table class="table">
+                        <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Nom d'utilisateur</th>
+                            <th>Adresse email</th>
+                            <th>Role</th>
+                            <th>Actions</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        {% for user in users %}
+                            <tr>
+                                <th scope="row">{{ loop.index }}</th>
+                                <td>{{ user.userIdentifier }}</td>
+                                <td>{{ user.email }}</td>
+                                <td>
+                                    {% if 'ROLE_ADMIN' in user.roles %}
+                                        Administrateur
+                                    {% endif %}
+                                    {% if 'ROLE_USER' in user.roles %}
+                                        Utilisateur
+                                    {% endif %}
+                                </td>
+                                <td>
+
+                                    {% if user.email not in 'admin@todoandco.com' %}
+                                        <ul class="actions">
+                                            <li>
+                                                <a href="{{ path('app_user_edit', {'id' : user.id}) }}">
+                                                    <img src="{{ asset('img/pen.svg') }}" alt="">
+                                                </a>
+                                            </li>
+                                            <li>
+                                                <a href="{{ path('app_user_delete', {'id' : user.id}) }}">
+                                                    <img src="{{ asset('img/trash-can.svg') }}" alt="">
+                                                </a>
+                                            </li>
+                                        </ul>
+                                    {% endif %}
+
+                                </td>
+                            </tr>
+                        {% endfor %}
+                        </tbody>
+                    </table>
+                </div>
+            {% endif %}
+
         </div>
-    {% else %}
-        <div class="row">
-            <table class="table">
-                <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Nom d'utilisateur</th>
-                    <th>Adresse d'utilisateur</th>
-                    <th>Actions</th>
-                </tr>
-                </thead>
-                <tbody>
-                {% for user in users %}
-                    <tr>
-                        <th scope="row">{{ loop.index }}</th>
-                        <td>{{ user.username }}</td>
-                        <td>{{ user.email }}</td>
-                        <td>
-                            <a href="{{ path('user_edit', {'id' : user.id}) }}" class="btn btn-success btn-sm">Edit</a>
-                        </td>
-                    </tr>
-                {% endfor %}
-                </tbody>
-            </table>
-        </div>
-    {% endif %}
+    </section>
 {% endblock %}
