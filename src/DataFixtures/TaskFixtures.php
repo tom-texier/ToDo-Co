@@ -25,11 +25,8 @@ class TaskFixtures extends Fixture implements DependentFixtureInterface
      */
     public function load(ObjectManager $manager): void
     {
-        $users = [];
+        $users = $this->userRepository->findAll();
         $users[] = null;
-        foreach ($this->userRepository->findAll() as $user) {
-            $users[] = $user;
-        }
 
         $tasksTitle = ['Réunion 17/03', 'Métro', 'Numéro de téléphone', 'Liste de courses', '5 mai 2023', 'Livres à lire', 'Musique', 'Site web', 'Rappels', 'Médecin', '29/04'];
         $tasksContent = [
